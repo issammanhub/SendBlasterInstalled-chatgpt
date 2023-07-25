@@ -37,6 +37,10 @@ jobs:
     - name: Extract filey.zip
       run: Expand-Archive filey.zip -DestinationPath Setup
 
+    - name: List files in Setup folder
+      run: |
+        Get-ChildItem -Path .\Setup -Recurse
+
     - name: Install SendBlaster
       run: |
         $installerPath = Join-Path $PWD.Path "Setup\SendBlaster Pro Edition v4.4.2.exe"
