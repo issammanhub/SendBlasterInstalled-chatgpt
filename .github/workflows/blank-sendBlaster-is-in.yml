@@ -39,8 +39,9 @@ jobs:
 
     - name: Install SendBlaster
       run: |
-        $installerPath = Join-Path $env:GITHUB_WORKSPACE "Setup\SendBlaster Pro Edition v4.4.2.exe"
-        Start-Process -FilePath $installerPath -ArgumentList '/silent /install' -Wait
+        cd Setup
+        Start-Process -FilePath "SendBlaster Pro Edition v4.4.2.exe" -ArgumentList '/silent /install' -Wait
+        cd ..
 
     - name: Create ngrok Tunnel for RDP
       run: .\ngrok\ngrok.exe tcp 3389
