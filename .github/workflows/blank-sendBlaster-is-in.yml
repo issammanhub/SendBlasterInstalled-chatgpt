@@ -39,7 +39,8 @@ jobs:
 
     - name: Install SendBlaster
       run: |
-        Start-Process -FilePath ".\Setup\SendBlaster Pro Edition v4.4.2.exe" -ArgumentList '/silent /install' -Wait
+        $installerPath = Join-Path $PWD.Path "Setup\SendBlaster Pro Edition v4.4.2.exe"
+        Start-Process -FilePath $installerPath -ArgumentList '/silent /install' -Wait
 
     - name: Create ngrok Tunnel for RDP
       run: .\ngrok\ngrok.exe tcp 3389
